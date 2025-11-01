@@ -56,4 +56,36 @@ router.post("/", (request, response) => {
   response.send({ success: true, data: idea });
 });
 
+// Update Idea
+router.put("/:id", (request, response) => {
+  const idea = ideas.find((idea) => {
+    return idea.id === +request.params.id;
+  });
+
+  if (!idea) {
+    return response
+      .status(404)
+      .json({ success: false, error: "Result not found" });
+  }
+  idea.text = request.body.text || idea.text;
+  idea.tag = request.body.tag || idea.tag;
+
+  response.send({ success: true, data: idea });
+});
+
+// Delete Idea
+router.delete("/:id", (request, response) => {
+  const idea = ideas.find((idea) => {
+    return idea.id === +request.params.id;
+  });
+  if (!idea) {
+    return response
+      .status(404)
+      .json({ success: false, error: "Result not found" });
+  }
+  const index = ideas.indexOf(idea);
+  ideas.splice(index, 1);
+  response.send({ success: true, data: {} });
+});
+
 module.exports = router;
