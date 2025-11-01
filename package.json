@@ -1,0 +1,14 @@
+{
+  "name": "random-ideas",
+  "version": "1.0.0",
+  "description": "Idea Sharing App",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Ryan Hans",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
