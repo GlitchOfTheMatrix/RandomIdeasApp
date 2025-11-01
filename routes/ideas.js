@@ -43,4 +43,17 @@ router.get("/:id", (request, response) => {
   response.json({ success: true, data: idea });
 });
 
+// Add an idea
+router.post("/", (request, response) => {
+  const idea = {
+    id: ideas.length + 1,
+    text: request.body.text,
+    tag: request.body.tag,
+    username: request.body.username,
+    date: new Date().toISOString().slice(0, 10),
+  };
+  ideas.push(idea);
+  response.send({ success: true, data: idea });
+});
+
 module.exports = router;
