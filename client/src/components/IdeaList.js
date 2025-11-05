@@ -1,4 +1,4 @@
-import ideasAPI from "../services/ideasAPI";
+import ideasAPI from "../services/ideasApi";
 class IdeaList {
   #ideaListEl;
   #ideas;
@@ -24,6 +24,10 @@ class IdeaList {
     } catch (error) {
       console.log(error);
     }
+  }
+  addIdeaToList(idea) {
+    this.#ideas.push(idea);
+    this.render();
   }
   #getTagClass(tag) {
     tag = tag.toLowerCase();
